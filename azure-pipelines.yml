@@ -4,6 +4,9 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
+variables:
+- group: dev
+
 steps:
 - task: Maven@3
   inputs:
@@ -15,4 +18,4 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'test'
-    options: "-B -e -DNAME=SAMIT"
+    options: "-B -e -DNAME=$(NAME)"
